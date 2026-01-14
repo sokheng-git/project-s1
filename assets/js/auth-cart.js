@@ -1,11 +1,15 @@
- /* auth-cart.js
+/* auth-cart.js
    Simple frontend-only auth + per-user cart (localStorage)
    Paste this file to assets/js/auth-cart.js and include it at the end of your pages.
 */
 
 /* ---------- Utilities ---------- */
 function readJSON(key) {
-  try { return JSON.parse(localStorage.getItem(key)); } catch(e) { return null; }
+  try {
+    return JSON.parse(localStorage.getItem(key));
+  } catch (e) {
+    return null;
+  }
 }
 function writeJSON(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
@@ -13,41 +17,46 @@ function writeJSON(key, value) {
 
 /* ---------- User management (simple demo) ---------- */
 function getUsers() {
-  return readJSON('users') || [];
+  return readJSON("users") || [];
 }
 function saveUsers(users) {
-  writeJSON('users', users);
+  writeJSON("users", users);
 }
 function findUserByUsername(username) {
-  return getUsers().find(u => u.username === username);
+  return getUsers().find((u) => u.username === username);
 }
 function registerUser(username, email, password) {
-  if (!username || !password) return { ok:false, msg:'Username and password required' };
-  if (findUserByUsername(username)) return { ok:false, msg:'Username already exists' };
+  if (!username || !password)
+    return { ok: false, msg: "Username and password required" };
+  if (findUserByUsername(username))
+    return { ok: false, msg: "Username already exists" };
   const users = getUsers();
   users.push({ username, email, password }); // demo only: plain password
   saveUsers(users);
-  return { ok:true };
+  return { ok: true };
 }
 function loginUser(username, password) {
   const user = findUserByUsername(username);
-  if (!user || user.password !== password) return { ok:false, msg:'Invalid credentials' };
-  localStorage.setItem('currentUser', username);
+  if (!user || user.password !== password)
+    return { ok: false, msg: "Invalid credentials" };
+  localStorage.setItem("currentUser", username);
   mergeGuestCartToUser(username);
-  return { ok:true };
+  return { ok: true };
 }
 function logoutUser() {
-  localStorage.removeItem('currentUser');
+  localStorage.removeItem("currentUser");
 }
 
 /* ---------- Cart helpers (per-user) ---------- */
 function getCurrentUsername() {
-  return localStorage.getItem('currentUser') || null;
+  return localStorage.getItem("currentUser") || null;
 }
 function getCartKeyForUser(username) {
   return `cart_user_${username}`;
 }
-function getGuestCartKey() { return 'cart_guest'; }
+function getGuestCartKey() {
+  return "cart_guest";
+}
 
 function getCart() {
   const username = getCurrentUsername();
@@ -73,8 +82,8 @@ function mergeGuestCartToUser(username) {
   const userKey = getCartKeyForUser(username);
   const userCart = readJSON(userKey) || [];
 
-  guestCart.forEach(gItem => {
-    const existing = userCart.find(u => u.id === gItem.id);
+  guestCart.forEach((gItem) => {
+    const existing = userCart.find((u) => u.id === gItem.id);
     if (existing) existing.quantity += gItem.quantity;
     else userCart.push(gItem);
   });
@@ -86,17 +95,17 @@ function mergeGuestCartToUser(username) {
 /* ---------- Add to cart (use this everywhere) ---------- */
 function addToCart(id, name, price) {
   const cart = getCart();
-  const existing = cart.find(i => i.id === id);
+  const existing = cart.find((i) => i.id === id);
   if (existing) existing.quantity++;
   else cart.push({ id, name, price, quantity: 1 });
   saveCart(cart);
   updateCartBadge();
-  alert(name + ' added to cart');
+  alert(name + " added to cart");
 }
 
 /* ---------- Cart badge update helper ---------- */
 function updateCartBadge() {
-  const badge = document.getElementById('cart-badge');
+  const badge = document.getElementById("cart-badge");
   if (!badge) return;
   const cart = getCart();
   const totalQty = cart.reduce((s, i) => s + (i.quantity || 0), 0);
@@ -106,25 +115,23 @@ function updateCartBadge() {
 /* ---------- Auth UI integration ---------- */
 function updateAuthUI() {
   const username = getCurrentUsername();
-  const authContainer = document.getElementById('auth-container');
+  const authContainer = document.getElementById("auth-container");
   if (!authContainer) return;
   if (username) {
     authContainer.innerHTML = `
       <span class="text-light me-2">Hi, ${username}</span>
       <button class="btn btn-sm btn-outline-light" id="logoutBtn">Logout</button>
     `;
-    document.getElementById('logoutBtn').addEventListener('click', () => {
+    document.getElementById("logoutBtn").addEventListener("click", () => {
       logoutUser();
       updateAuthUI();
       updateCartBadge();
     });
   } else {
     authContainer.innerHTML = `
-      <button class="btn btn-sm btn-outline-light me-2" id="showLoginBtn">Login</button>
-      <button class="btn btn-sm btn-light" id="showRegisterBtn">Register</button>
+      <a class="btn btn-sm btn-outline-light me-2" href="login.html">Login</a>
+      <a class="btn btn-sm btn-light" href="register.html">Register</a>
     `;
-    document.getElementById('showLoginBtn').addEventListener('click', showLoginModal);
-    document.getElementById('showRegisterBtn').addEventListener('click', showRegisterModal);
   }
 }
 
@@ -144,16 +151,21 @@ function showRegisterModal() {
       </div>
     </div>
   `;
-  document.body.insertAdjacentHTML('beforeend', html);
-  document.getElementById('regCancel').addEventListener('click', () => document.getElementById('authModal').remove());
-  document.getElementById('regSubmit').addEventListener('click', () => {
-    const u = document.getElementById('regUsername').value.trim();
-    const e = document.getElementById('regEmail').value.trim();
-    const p = document.getElementById('regPassword').value;
+  document.body.insertAdjacentHTML("beforeend", html);
+  document
+    .getElementById("regCancel")
+    .addEventListener("click", () =>
+      document.getElementById("authModal").remove()
+    );
+  document.getElementById("regSubmit").addEventListener("click", () => {
+    const u = document.getElementById("regUsername").value.trim();
+    const e = document.getElementById("regEmail").value.trim();
+    const p = document.getElementById("regPassword").value;
     const res = registerUser(u, e, p);
-    if (!res.ok) alert(res.msg); else {
-      alert('Registered. You can now login.');
-      document.getElementById('authModal').remove();
+    if (!res.ok) alert(res.msg);
+    else {
+      alert("Registered. You can now login.");
+      document.getElementById("authModal").remove();
     }
   });
 }
@@ -172,15 +184,20 @@ function showLoginModal() {
       </div>
     </div>
   `;
-  document.body.insertAdjacentHTML('beforeend', html);
-  document.getElementById('loginCancel').addEventListener('click', () => document.getElementById('authModal').remove());
-  document.getElementById('loginSubmit').addEventListener('click', () => {
-    const u = document.getElementById('loginUsername').value.trim();
-    const p = document.getElementById('loginPassword').value;
+  document.body.insertAdjacentHTML("beforeend", html);
+  document
+    .getElementById("loginCancel")
+    .addEventListener("click", () =>
+      document.getElementById("authModal").remove()
+    );
+  document.getElementById("loginSubmit").addEventListener("click", () => {
+    const u = document.getElementById("loginUsername").value.trim();
+    const p = document.getElementById("loginPassword").value;
     const res = loginUser(u, p);
-    if (!res.ok) alert(res.msg); else {
-      alert('Login successful');
-      document.getElementById('authModal').remove();
+    if (!res.ok) alert(res.msg);
+    else {
+      alert("Login successful");
+      document.getElementById("authModal").remove();
       updateAuthUI();
       updateCartBadge();
     }
@@ -188,26 +205,29 @@ function showLoginModal() {
 }
 
 /* ---------- Init on page load ---------- */
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   // inject auth container into navbar if not present
-  if (!document.getElementById('auth-container')) {
-    const nav = document.querySelector('.navbar .container .collapse .navbar-nav') || document.querySelector('.navbar .container');
+  if (!document.getElementById("auth-container")) {
+    const nav =
+      document.querySelector(".navbar .container .collapse .navbar-nav") ||
+      document.querySelector(".navbar .container");
     if (nav) {
-      const li = document.createElement('li');
-      li.className = 'nav-item';
-      li.innerHTML = '<div id="auth-container" class="d-flex align-items-center"></div>';
+      const li = document.createElement("li");
+      li.className = "nav-item";
+      li.innerHTML =
+        '<div id="auth-container" class="d-flex align-items-center"></div>';
       nav.appendChild(li);
     }
   }
 
   // inject small cart badge if not present
-  if (!document.getElementById('cart-badge')) {
+  if (!document.getElementById("cart-badge")) {
     const cartLink = document.querySelector('.nav-link[href="cart.html"]');
     if (cartLink) {
-      const span = document.createElement('span');
-      span.id = 'cart-badge';
-      span.className = 'badge bg-danger ms-1';
-      span.textContent = '0';
+      const span = document.createElement("span");
+      span.id = "cart-badge";
+      span.className = "badge bg-danger ms-1";
+      span.textContent = "0";
       cartLink.appendChild(span);
     }
   }
