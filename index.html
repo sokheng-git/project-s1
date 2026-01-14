@@ -31,6 +31,11 @@
         transform: scale(1.03);
         box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
       }
+      .category-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        cursor: pointer;
+      }
     </style>
   </head>
   <body style="min-height: 100vh; display: flex; flex-direction: column">
@@ -77,408 +82,469 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-hero position-relative">
-      <div class="hero-content container">
-        <div class="row g-4 align-items-center">
-          <div class="col-md-6">
-            <div class="card-placeholder">
-              <h1 class="fw-bold">Tech Accessories Shop</h1>
-              <p class="text-muted">
-                Best gadgets for your daily life — modern, reliable, and
-                affordable.
-              </p>
-              <a href="products.html" class="btn btn-primary">Shop Now</a>
-            </div>
-          </div>
-          <div class="col-md-6 d-none d-md-flex justify-content-center">
-            <div class="row g-3">
-              <div class="col-6">
-                <div class="card-placeholder" style="height: 120px"></div>
-              </div>
-              <div class="col-6">
-                <div class="card-placeholder" style="height: 120px"></div>
-              </div>
-              <div class="col-12 mt-2">
-                <div class="card-placeholder" style="height: 80px"></div>
-              </div>
-            </div>
+    <section
+      class="hero-section position-relative text-center text-white py-5"
+      style="
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 60vh;
+        display: flex;
+        align-items: center;
+      "
+    >
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <h1 class="display-4 fw-bold mb-3">Tech Accessories Shop</h1>
+            <p class="lead mb-4">
+              Discover the latest gadgets and accessories for your modern
+              lifestyle. High-quality, affordable, and reliable tech solutions.
+            </p>
+            <a href="products.html" class="btn btn-light btn-lg px-4 py-2"
+              >Shop Now</a
+            >
           </div>
         </div>
       </div>
-      <!-- <div class="icon-group-hero">
-        <img src="assets/icons/cart.svg" alt="cart" />
-        <img src="assets/icons/search.svg" alt="search" />
-        <img src="assets/icons/user.svg" alt="user" />
-        <img src="assets/icons/phone.svg" alt="phone" />
-        <img src="assets/icons/truck.svg" alt="truck" />
-        <img src="assets/icons/tag.svg" alt="tag" />
-      </div> -->
     </section>
 
-    <!-- Products -->
-    <section class="container my-5 flex-grow-1">
-      <h2 class="text-center mb-4">ផលិតផលកំពុងពេញនិយម</h2>
-
-      <div class="row g-4" id="homepage-products">
-        <!-- Product cards inserted statically below -->
+    <!-- Featured Categories -->
+    <section class="container my-5">
+      <h2 class="text-center mb-4">Featured Categories</h2>
+      <div class="row g-4">
         <div class="col-md-3">
-          <div class="card h-100 shadow-sm" onclick="goToDetail(1)">
+          <div
+            class="card text-center border-0 shadow-sm category-card"
+            onclick="window.location.href='products.html?category=audio'"
+          >
             <img
               src="assets/images/sonyhead.jpg"
               class="card-img-top"
-              alt="SONY WH-1000XM5"
+              alt="Audio"
+              style="height: 150px; object-fit: cover"
             />
-            <div class="card-body text-center">
-              <h5 class="card-title">
-                SONY WH-1000XM5 Wireless Industry Leading Noise Canceling
-                Headphones
-              </h5>
-              <p class="card-text">
-                <span class="text-danger fw-bold">$299.00</span>
-              </p>
-              <button
-                class="btn btn-outline-primary"
-                onclick="event.stopPropagation(); addToCart(1, 'SONY WH-1000XM5 Wireless Industry Leading Noise Canceling Headphones', 299)"
-              >
-                Add to Cart
-              </button>
+            <div class="card-body">
+              <h5 class="card-title">Audio</h5>
+              <p class="card-text">Headphones, Speakers & More</p>
             </div>
           </div>
         </div>
-
         <div class="col-md-3">
-          <div class="card h-100 shadow-sm" onclick="goToDetail(2)">
-            <img
-              src="assets/images/mouse.jpg"
-              class="card-img-top"
-              alt="Mouse Fashion Wired Mouse 3600N"
-            />
-            <div class="card-body text-center">
-              <h5 class="card-title">Mouse Fashion Wired Mouse 3600N</h5>
-              <p class="card-text">
-                <span class="text-danger fw-bold">$6.00</span>
-              </p>
-              <button
-                class="btn btn-outline-primary"
-                onclick="event.stopPropagation(); addToCart(2, 'Mouse Fashion Wired Mouse 3600N', 6)"
-              >
-                Add to Cart
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="card h-100 shadow-sm" onclick="goToDetail(3)">
-            <img
-              src="assets/images/chargAnker.jpg"
-              class="card-img-top"
-              alt="ANKER PowerLine III"
-            />
-            <div class="card-body text-center">
-              <h5 class="card-title">
-                ខ្សែសាកល្បឿនលឿន ANKER PowerLine III Flow USB-C With Lightning
-                Connector
-              </h5>
-              <p class="card-text">
-                <span class="text-danger fw-bold">$17.00</span>
-              </p>
-              <button
-                class="btn btn-outline-primary"
-                onclick="event.stopPropagation(); addToCart(3, 'ANKER PowerLine III Flow USB-C', 17)"
-              >
-                Add to Cart
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="card h-100 shadow-sm" onclick="goToDetail(4)">
-            <img
-              src="assets/images/speaker.jpg"
-              class="card-img-top"
-              alt="Xdobo Vibe Plus"
-            />
-            <div class="card-body text-center">
-              <h5 class="card-title">Xdobo Vibe Plus</h5>
-              <p class="card-text">
-                <span class="text-danger fw-bold">$82.00</span>
-              </p>
-              <button
-                class="btn btn-outline-primary"
-                onclick="event.stopPropagation(); addToCart(4, 'Xdobo Vibe Plus', 82)"
-              >
-                Add to Cart
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Row 2 -->
-        <div class="col-md-3">
-          <div class="card h-100 shadow-sm" onclick="goToDetail(7)">
-            <img
-              src="assets/images/នាឡិកាឆ្លាតវៃ ​KIESLECT Lora3 (PINK.jpg"
-              class="card-img-top"
-              alt="KIESLECT Lora3 (PINK)"
-            />
-            <div class="card-body text-center">
-              <h5 class="card-title">នាឡិកាឆ្លាតវៃ KIESLECT Lora3 (PINK)</h5>
-              <p class="card-text">
-                <span class="text-danger fw-bold">$79.00</span>
-              </p>
-              <button
-                class="btn btn-outline-primary"
-                onclick="event.stopPropagation(); addToCart(7, 'KIESLECT Lora3 (PINK)', 79)"
-              >
-                Add to Cart
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="card h-100 shadow-sm" onclick="goToDetail(8)">
+          <div
+            class="card text-center border-0 shadow-sm category-card"
+            onclick="window.location.href='products.html?category=wearables'"
+          >
             <img
               src="assets/images/HUAWEI WATCH FIT 4.jpg"
               class="card-img-top"
-              alt="HUAWEI WATCH FIT 4"
+              alt="Wearables"
+              style="height: 150px; object-fit: cover"
             />
-            <div class="card-body text-center">
-              <h5 class="card-title">នាឡិកាឆ្លាតវៃ HUAWEI WATCH FIT 4</h5>
-              <p class="card-text">
-                <span class="text-danger fw-bold">$119.00</span>
-              </p>
-              <button
-                class="btn btn-outline-primary"
-                onclick="event.stopPropagation(); addToCart(8, 'HUAWEI WATCH FIT 4', 119)"
-              >
-                Add to Cart
-              </button>
+            <div class="card-body">
+              <h5 class="card-title">Wearables</h5>
+              <p class="card-text">Smartwatches & Accessories</p>
             </div>
           </div>
         </div>
-
         <div class="col-md-3">
-          <div class="card h-100 shadow-sm" onclick="goToDetail(9)">
+          <div
+            class="card text-center border-0 shadow-sm category-card"
+            onclick="window.location.href='products.html?category=chargers'"
+          >
             <img
-              src="assets/images/ថ្មជំនួយទូរសព្ទ REMAX POWER BANK RPP-533 PD20+22.5W 10000mAh.jpg"
+              src="assets/images/chargAnker.jpg"
               class="card-img-top"
-              alt="REMAX Power Bank"
+              alt="Chargers"
+              style="height: 150px; object-fit: cover"
             />
-            <div class="card-body text-center">
-              <h5 class="card-title">
-                REMAX POWER BANK RPP-533 PD20+22.5W 10000mAh
-              </h5>
-              <p class="card-text">
-                <span class="text-danger fw-bold">$29.00</span>
-              </p>
-              <button
-                class="btn btn-outline-primary"
-                onclick="event.stopPropagation(); addToCart(9, 'REMAX POWER BANK RPP-533', 29)"
-              >
-                Add to Cart
-              </button>
+            <div class="card-body">
+              <h5 class="card-title">Chargers & Cables</h5>
+              <p class="card-text">Power Banks, Cables & Adapters</p>
             </div>
           </div>
         </div>
-
         <div class="col-md-3">
-          <div class="card h-100 shadow-sm" onclick="goToDetail(10)">
+          <div
+            class="card text-center border-0 shadow-sm category-card"
+            onclick="window.location.href='products.html?category=accessories'"
+          >
             <img
-              src="assets/images/HUAWEI M-Pen lite.jpg"
+              src="assets/images/mouse.jpg"
               class="card-img-top"
-              alt="HUAWEI M-Pen lite"
+              alt="Accessories"
+              style="height: 150px; object-fit: cover"
             />
-            <div class="card-body text-center">
-              <h5 class="card-title">HUAWEI M-Pen lite</h5>
-              <p class="card-text">
-                <span class="text-danger fw-bold">$20.00</span>
-              </p>
-              <button
-                class="btn btn-outline-primary"
-                onclick="event.stopPropagation(); addToCart(10, 'HUAWEI M-Pen lite', 20)"
-              >
-                Add to Cart
-              </button>
+            <div class="card-body">
+              <h5 class="card-title">Accessories</h5>
+              <p class="card-text">Mice, Pens & More</p>
             </div>
           </div>
         </div>
-
-        <!-- Row 3 
-      <div class="col-md-3">
-        <div class="card h-100 shadow-sm" onclick="goToDetail(11)">
-          <img src="assets/images/POWER BANK CUKTECH CP24 40W ( 20000mAh ).jpg" class="card-img-top" alt="POWER BANK CUKTECH CP24" />
-          <div class="card-body text-center">
-            <h5 class="card-title">POWER BANK CUKTECH CP24 40W (20000mAh)</h5>
-            <p class="card-text"><span class="text-danger fw-bold">$39.00</span></p>
-            <button class="btn btn-outline-primary" onclick="event.stopPropagation(); addToCart(11, 'POWER BANK CUKTECH CP24', 39)">
-              Add to Cart
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3">
-        <div class="card h-100 shadow-sm" onclick="goToDetail(12)">
-          <img src="assets/images/adapter.jpg" class="card-img-top" alt="LDNIO USB-A+C HUB" />
-          <div class="card-body text-center">
-            <h5 class="card-title">LDNIO USB-A+C HUB 4 IN 1 Adapter DS-114uc</h5>
-            <p class="card-text"><span class="text-danger fw-bold">$29.00</span></p>
-            <button class="btn btn-outline-primary" onclick="event.stopPropagation(); addToCart(12, 'LDNIO USB-A+C HUB DS-114uc', 29)">
-              Add to Cart
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3">
-        <div class="card h-100 shadow-sm" onclick="goToDetail(13)">
-          <img src="assets/images/Speaker Divoom Minitoo.jpg" class="card-img-top" alt="Speaker Divoom Minitoo" />
-          <div class="card-body text-center">
-            <h5 class="card-title">Speaker Divoom Minitoo</h5>
-            <p class="card-text"><span class="text-danger fw-bold">$39.00</span></p>
-            <button class="btn btn-outline-primary" onclick="event.stopPropagation(); addToCart(13, 'Speaker Divoom Minitoo', 39)">
-              Add to Cart
-            </button>
-          </div>
-        </div>
-      </div> -->
-
-        <!-- Row 4 
-      <div class="col-md-3">
-        <div class="card h-100 shadow-sm" onclick="goToDetail(14)">
-          <img src="assets/images/BMTJ GRAMMY SINCE 2007.jpg" class="card-img-top" alt="BMTJ GRAMMY" />
-          <div class="card-body text-center">
-            <h5 class="card-title">BMTJ GRAMMY SINCE 2007</h5>
-            <p class="card-text"><span class="text-danger fw-bold">$17.00</span></p>
-            <button class="btn btn-outline-primary" onclick="event.stopPropagation(); addToCart(14, 'BMTJ GRAMMY SINCE 2007', 17)">
-              Add to Cart
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3">
-        <div class="card h-100 shadow-sm" onclick="goToDetail(15)">
-          <img src="assets/images/Speaker Divoom Tiivoo2 (White).jpg" class="card-img-top" alt="Tiivoo2" />
-          <div class="card-body text-center">
-            <h5 class="card-title">Speaker Divoom Tiivoo2 (White)</h5>
-            <p class="card-text"><span class="text-danger fw-bold">$69.00</span></p>
-            <button class="btn btn-outline-primary" onclick="event.stopPropagation(); addToCart(15, 'Speaker Divoom Tiivoo2 (White)', 69)">
-              Add to Cart
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3">
-        <div class="card h-100 shadow-sm" onclick="goToDetail(16)">
-          <img src="assets/images/ឧបករណ៍បំពងសម្លេង​ SONY SES-XE200 Bluetooth.jpg" class="card-img-top" alt="SONY SES-XE200" />
-          <div class="card-body text-center">
-            <h5 class="card-title">ឧបករណ៍បំពងសម្លេង SONY SES-XE200 Bluetooth</h5>
-            <p class="card-text"><span class="text-danger fw-bold">$109.00</span></p>
-            <button class="btn btn-outline-primary" onclick="event.stopPropagation(); addToCart(16, 'SONY SES-XE200 Bluetooth', 109)">
-              Add to Cart
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Row 5 -->
-        <div class="col-md-3">
-          <div class="card h-100 shadow-sm" onclick="goToDetail(17)">
-            <img
-              src="assets/images/Apple EarPods គុណភាពខ្ពស និងប្រើឌុយ USB-C.jpg"
-              class="card-img-top"
-              alt="Apple EarPods"
-            />
-            <div class="card-body text-center">
-              <h5 class="card-title">Apple EarPods (USB-C)</h5>
-              <p class="card-text">
-                <span class="text-danger fw-bold">$38.00</span>
-              </p>
-              <button
-                class="btn btn-outline-primary"
-                onclick="event.stopPropagation(); addToCart(17, 'Apple EarPods (USB-C)', 38)"
-              >
-                Add to Cart
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="card h-100 shadow-sm" onclick="goToDetail(18)">
-            <img
-              src="assets/images/REMAX AMOLED WATCH30.jpg"
-              class="card-img-top"
-              alt="REMAX AMOLED WATCH30"
-            />
-            <div class="card-body text-center">
-              <h5 class="card-title">REMAX AMOLED WATCH30</h5>
-              <p class="card-text">
-                <span class="text-danger fw-bold">$59.00</span>
-              </p>
-              <button
-                class="btn btn-outline-primary"
-                onclick="event.stopPropagation(); addToCart(18, 'REMAX AMOLED WATCH30', 59)"
-              >
-                Add to Cart
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="card h-100 shadow-sm" onclick="goToDetail(19)">
-            <img
-              src="assets/images/Apple USB-C Charge Cable (1m).jpg"
-              class="card-img-top"
-              alt="Apple USB-C Cable"
-            />
-            <div class="card-body text-center">
-              <h5 class="card-title">Apple USB-C Charge Cable (1m)</h5>
-              <p class="card-text">
-                <span class="text-danger fw-bold">$28.00</span>
-              </p>
-              <button
-                class="btn btn-outline-primary"
-                onclick="event.stopPropagation(); addToCart(19, 'Apple USB-C Charge Cable (1m)', 28)"
-              >
-                Add to Cart
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="card h-100 shadow-sm" onclick="goToDetail(20)">
-            <img
-              src="assets/images/ថ្មជំនួយទូរសព្ទទាន់សម័យ Magnetic Charger W50.jpg"
-              class="card-img-top"
-              alt="Magnetic Charger W50"
-            />
-            <div class="card-body text-center">
-              <h5 class="card-title">
-                ថ្មជំនួយទូរសព្ទទាន់សម័យ Magnetic Charger W50
-              </h5>
-              <p class="card-text">
-                <span class="text-danger fw-bold">$18.00</span>
-              </p>
-              <button
-                class="btn btn-outline-primary"
-                onclick="event.stopPropagation(); addToCart(20, 'Magnetic Charger W50', 18)"
-              >
-                Add to Cart
-              </button>
-            </div>
-          </div>
-        </div>
-        -->
       </div>
     </section>
+
+    <!-- Featured Products -->
+    <section class="container my-5">
+      <h2 class="text-center mb-4">Featured Products</h2>
+      <ul
+        class="nav nav-tabs justify-content-center mb-4"
+        id="productTabs"
+        role="tablist"
+      >
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link active"
+            id="popular-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#popular"
+            type="button"
+            role="tab"
+            aria-controls="popular"
+            aria-selected="true"
+          >
+            Popular
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="new-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#new"
+            type="button"
+            role="tab"
+            aria-controls="new"
+            aria-selected="false"
+          >
+            New Arrivals
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="sale-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#sale"
+            type="button"
+            role="tab"
+            aria-controls="sale"
+            aria-selected="false"
+          >
+            On Sale
+          </button>
+        </li>
+      </ul>
+      <div class="tab-content" id="productTabsContent">
+        <div
+          class="tab-pane fade show active"
+          id="popular"
+          role="tabpanel"
+          aria-labelledby="popular-tab"
+        >
+          <div class="row g-4">
+            <!-- Popular products -->
+            <div class="col-md-3">
+              <div class="card h-100 shadow-sm" onclick="goToDetail(1)">
+                <img
+                  src="assets/images/sonyhead.jpg"
+                  class="card-img-top"
+                  alt="SONY WH-1000XM5"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">SONY WH-1000XM5</h5>
+                  <p class="card-text">
+                    <span class="text-danger fw-bold">$299.00</span>
+                  </p>
+                  <button
+                    class="btn btn-outline-primary"
+                    onclick="event.stopPropagation(); addToCart(1, 'SONY WH-1000XM5', 299)"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card h-100 shadow-sm" onclick="goToDetail(4)">
+                <img
+                  src="assets/images/speaker.jpg"
+                  class="card-img-top"
+                  alt="Xdobo Vibe Plus"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Xdobo Vibe Plus</h5>
+                  <p class="card-text">
+                    <span class="text-danger fw-bold">$82.00</span>
+                  </p>
+                  <button
+                    class="btn btn-outline-primary"
+                    onclick="event.stopPropagation(); addToCart(4, 'Xdobo Vibe Plus', 82)"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card h-100 shadow-sm" onclick="goToDetail(8)">
+                <img
+                  src="assets/images/HUAWEI WATCH FIT 4.jpg"
+                  class="card-img-top"
+                  alt="HUAWEI WATCH FIT 4"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">HUAWEI WATCH FIT 4</h5>
+                  <p class="card-text">
+                    <span class="text-danger fw-bold">$119.00</span>
+                  </p>
+                  <button
+                    class="btn btn-outline-primary"
+                    onclick="event.stopPropagation(); addToCart(8, 'HUAWEI WATCH FIT 4', 119)"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card h-100 shadow-sm" onclick="goToDetail(9)">
+                <img
+                  src="assets/images/ថ្មជំនួយទូរសព្ទ REMAX POWER BANK RPP-533 PD20+22.5W 10000mAh.jpg"
+                  class="card-img-top"
+                  alt="REMAX Power Bank"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">REMAX POWER BANK</h5>
+                  <p class="card-text">
+                    <span class="text-danger fw-bold">$29.00</span>
+                  </p>
+                  <button
+                    class="btn btn-outline-primary"
+                    onclick="event.stopPropagation(); addToCart(9, 'REMAX POWER BANK', 29)"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="new"
+          role="tabpanel"
+          aria-labelledby="new-tab"
+        >
+          <div class="row g-4">
+            <!-- New arrivals -->
+            <div class="col-md-3">
+              <div class="card h-100 shadow-sm" onclick="goToDetail(17)">
+                <img
+                  src="assets/images/Apple EarPods គុណភាពខ្ពស និងប្រើឌុយ USB-C.jpg"
+                  class="card-img-top"
+                  alt="Apple EarPods"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Apple EarPods (USB-C)</h5>
+                  <p class="card-text">
+                    <span class="text-danger fw-bold">$38.00</span>
+                  </p>
+                  <button
+                    class="btn btn-outline-primary"
+                    onclick="event.stopPropagation(); addToCart(17, 'Apple EarPods (USB-C)', 38)"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card h-100 shadow-sm" onclick="goToDetail(18)">
+                <img
+                  src="assets/images/REMAX AMOLED WATCH30.jpg"
+                  class="card-img-top"
+                  alt="REMAX AMOLED WATCH30"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">REMAX AMOLED WATCH30</h5>
+                  <p class="card-text">
+                    <span class="text-danger fw-bold">$59.00</span>
+                  </p>
+                  <button
+                    class="btn btn-outline-primary"
+                    onclick="event.stopPropagation(); addToCart(18, 'REMAX AMOLED WATCH30', 59)"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card h-100 shadow-sm" onclick="goToDetail(19)">
+                <img
+                  src="assets/images/Apple USB-C Charge Cable (1m).jpg"
+                  class="card-img-top"
+                  alt="Apple USB-C Cable"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Apple USB-C Cable</h5>
+                  <p class="card-text">
+                    <span class="text-danger fw-bold">$28.00</span>
+                  </p>
+                  <button
+                    class="btn btn-outline-primary"
+                    onclick="event.stopPropagation(); addToCart(19, 'Apple USB-C Cable', 28)"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card h-100 shadow-sm" onclick="goToDetail(20)">
+                <img
+                  src="assets/images/ថ្មជំនួយទូរសព្ទទាន់សម័យ Magnetic Charger W50.jpg"
+                  class="card-img-top"
+                  alt="Magnetic Charger W50"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Magnetic Charger W50</h5>
+                  <p class="card-text">
+                    <span class="text-danger fw-bold">$18.00</span>
+                  </p>
+                  <button
+                    class="btn btn-outline-primary"
+                    onclick="event.stopPropagation(); addToCart(20, 'Magnetic Charger W50', 18)"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="sale"
+          role="tabpanel"
+          aria-labelledby="sale-tab"
+        >
+          <div class="row g-4">
+            <!-- On sale -->
+            <div class="col-md-3">
+              <div class="card h-100 shadow-sm" onclick="goToDetail(2)">
+                <img
+                  src="assets/images/mouse.jpg"
+                  class="card-img-top"
+                  alt="Mouse"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">Mouse Fashion Wired</h5>
+                  <p class="card-text">
+                    <span class="text-danger fw-bold">$6.00</span>
+                    <small class="text-muted"><s>$10.00</s></small>
+                  </p>
+                  <button
+                    class="btn btn-outline-primary"
+                    onclick="event.stopPropagation(); addToCart(2, 'Mouse Fashion Wired', 6)"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card h-100 shadow-sm" onclick="goToDetail(3)">
+                <img
+                  src="assets/images/chargAnker.jpg"
+                  class="card-img-top"
+                  alt="ANKER"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">ANKER PowerLine III</h5>
+                  <p class="card-text">
+                    <span class="text-danger fw-bold">$17.00</span>
+                    <small class="text-muted"><s>$20.00</s></small>
+                  </p>
+                  <button
+                    class="btn btn-outline-primary"
+                    onclick="event.stopPropagation(); addToCart(3, 'ANKER PowerLine III', 17)"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card h-100 shadow-sm" onclick="goToDetail(7)">
+                <img
+                  src="assets/images/នាឡិកាឆ្លាតវៃ ​KIESLECT Lora3 (PINK.jpg"
+                  class="card-img-top"
+                  alt="KIESLECT"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">KIESLECT Lora3</h5>
+                  <p class="card-text">
+                    <span class="text-danger fw-bold">$79.00</span>
+                    <small class="text-muted"><s>$89.00</s></small>
+                  </p>
+                  <button
+                    class="btn btn-outline-primary"
+                    onclick="event.stopPropagation(); addToCart(7, 'KIESLECT Lora3', 79)"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card h-100 shadow-sm" onclick="goToDetail(10)">
+                <img
+                  src="assets/images/HUAWEI M-Pen lite.jpg"
+                  class="card-img-top"
+                  alt="HUAWEI M-Pen"
+                />
+                <div class="card-body text-center">
+                  <h5 class="card-title">HUAWEI M-Pen lite</h5>
+                  <p class="card-text">
+                    <span class="text-danger fw-bold">$20.00</span>
+                    <small class="text-muted"><s>$25.00</s></small>
+                  </p>
+                  <button
+                    class="btn btn-outline-primary"
+                    onclick="event.stopPropagation(); addToCart(10, 'HUAWEI M-Pen lite', 20)"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <!-- <section class="bg-light py-5">
+      <div class="container text-center">
+        <h2 class="mb-3">Join Our Newsletter</h2>
+        <p class="mb-4">
+          Stay updated with the latest tech accessories and exclusive offers.
+        </p>
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <div class="input-group mb-3">
+              <input
+                type="email"
+                class="form-control"
+                placeholder="Enter your email"
+                aria-label="Email"
+              />
+              <button class="btn btn-primary" type="button">Subscribe</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
 
     <!-- Footer -->
     <footer class="">

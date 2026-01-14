@@ -17,21 +17,60 @@
     <link rel="stylesheet" href="assets/css/hero-bg.css" />
 
     <style>
-      /* Make all product images same size */
+      body {
+        background-color: #f8f9fa;
+        font-family: "Hanuman", sans-serif;
+      }
+      .sidebar {
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
       .card-img-top {
         width: 100%;
-        height: 220px;
+        height: 250px;
         object-fit: cover;
-      }
-
-      /* Make card same height */
-      .card {
-        height: 100%;
         transition: transform 0.3s ease;
       }
+      .card {
+        height: 100%;
+        border: none;
+        background: #ffffff;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
       .card:hover {
-        transform: scale(1.05);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      }
+      .card:hover .card-img-top {
+        transform: scale(1.02);
+      }
+      .card-title {
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: #333;
+      }
+      .card-text {
+        color: #007bff;
+        font-weight: 600;
+      }
+      .btn-outline-primary {
+        border-color: #007bff;
+        color: #007bff;
+      }
+      .btn-outline-primary:hover {
+        background-color: #007bff;
+        border-color: #007bff;
+      }
+      h2 {
+        font-weight: 400;
+        color: #333;
+      }
+      .form-check-input:checked {
+        background-color: #007bff;
+        border-color: #007bff;
       }
     </style>
   </head>
@@ -82,20 +121,99 @@
 
     <!-- Products Section -->
     <div class="container my-5">
-      <div class="row mb-4">
-        <div class="row mb-3">
-          <div class="col-md-3 ms-auto">
-            <input
-              id="searchInput"
-              class="form-control"
-              placeholder="Search product"
-            />
+      <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-3 mb-4">
+          <div class="sidebar">
+            <h5>Filters</h5>
+            <div class="mb-3">
+              <label class="form-label">Categories</label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value="audio"
+                  id="audioCheck"
+                  name="category"
+                />
+                <label class="form-check-label" for="audioCheck">Audio</label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value="wearables"
+                  id="wearablesCheck"
+                  name="category"
+                />
+                <label class="form-check-label" for="wearablesCheck"
+                  >Wearables</label
+                >
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value="chargers"
+                  id="chargersCheck"
+                  name="category"
+                />
+                <label class="form-check-label" for="chargersCheck"
+                  >Chargers & Cables</label
+                >
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value="accessories"
+                  id="accessoriesCheck"
+                  name="category"
+                />
+                <label class="form-check-label" for="accessoriesCheck"
+                  >Accessories</label
+                >
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Price Range</label>
+              <input
+                type="range"
+                class="form-range"
+                id="priceRange"
+                min="0"
+                max="500"
+                value="500"
+              />
+              <div class="d-flex justify-content-between">
+                <span>$0</span>
+                <span id="priceValue">$500</span>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <h2 class="text-center mb-5">Our Products</h2>
-      <div class="row g-4" id="product-list"></div>
+        <!-- Main Content -->
+        <div class="col-md-9">
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Our Products</h2>
+            <div class="d-flex gap-2">
+              <input
+                id="searchInput"
+                class="form-control"
+                placeholder="Search products..."
+                style="width: 200px"
+              />
+              <select class="form-select" id="sortSelect" style="width: 150px">
+                <option value="name">Sort by Name</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+              </select>
+            </div>
+          </div>
+          <div class="row g-4" id="product-list"></div>
+        </div>
+      </div>
     </div>
 
     <footer class="">
@@ -177,5 +295,37 @@
 
     <!-- Bootstrap JS -->
     <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script>
+      // Price range
+      const priceRange = document.getElementById("priceRange");
+      const priceValue = document.getElementById("priceValue");
+      if (priceRange) {
+        priceRange.addEventListener("input", () => {
+          priceValue.textContent = "$" + priceRange.value;
+        });
+      }
+
+      // Apply filters (placeholder)
+      function applyFilters() {
+        const selectedCategories = [];
+        document.querySelectorAll(".form-check-input:checked").forEach((cb) => {
+          selectedCategories.push(cb.value);
+        });
+        const maxPrice = priceRange.value;
+        console.log("Filters:", selectedCategories, maxPrice);
+        // Implement filtering logic here
+      }
+
+      // Sort select
+      const sortSelect = document.getElementById("sortSelect");
+      if (sortSelect) {
+        sortSelect.addEventListener("change", () => {
+          console.log("Sort by:", sortSelect.value);
+          // Implement sorting
+        });
+      }
+    </script>
   </body>
 </html>
