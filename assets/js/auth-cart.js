@@ -129,8 +129,7 @@ function updateAuthUI() {
     });
   } else {
     authContainer.innerHTML = `
-      <a class="btn btn-sm btn-outline-light me-2" href="login.html">Login</a>
-      <a class="btn btn-sm btn-light" href="register.html">Register</a>
+      <a class="btn btn-sm btn-outline-light" href="account.html">Account</a>
     `;
   }
 }
