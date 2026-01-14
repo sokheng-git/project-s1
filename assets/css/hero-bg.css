@@ -1,0 +1,38 @@
+.hero-hero {
+  background-image: url('../images/bg-hero.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  color: #0b2b3a;
+  position: relative;
+  overflow: hidden;
+}
+.hero-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(230,242,255,0.6));
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 2; max-width: 1100px; width: 100%; }
+.card-placeholder {
+  background: rgba(255,255,255,0.6);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  padding: 18px;
+}
+.icon-group-hero { position: absolute; right: 28px; bottom: 18px; display: flex; gap: 12px; z-index: 3; }
+.icon-group-hero img, .icon-group-hero svg {
+  width: 36px; height: 36px; border-radius: 6px; padding: 6px;
+  background: rgba(255,255,255,0.6); box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+}
+.nav-icon { width:20px; height:20px; vertical-align:middle; margin-left:6px; filter: drop-shadow(0 1px 0 rgba(0,0,0,0.05)); }
+.btn-primary {
+  background: linear-gradient(90deg,#007ea7,#00a3c4); border: none; box-shadow: 0 6px 18px rgba(0,163,196,0.12);
+}
+.btn-primary:hover { transform: translateY(-2px); }

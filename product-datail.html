@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Product Detail</title>
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hanuman:wght@100;300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <div class="container my-5" id="product-detail">
+      <!-- Product detail will be inserted here -->
+    </div>
+
+    <script>
+      const products = [
+        {
+          id: 1,
+          name: "SONY WH-1000XM5 Wireless Industry Leading Noise Canceling Headphones",
+          price: 299.0,
+          image: "assets/images/sonyhead.jpg",
+        },
+        {
+          id: 2,
+          name: "Mouse Fashion Wired Mouse 3600N",
+          price: 6.0,
+          image: "assets/images/mouse.jpg",
+        },
+        {
+          id: 3,
+          name: "ខ្សែសាកល្បឿនលឿន​​ ANKER PowerLine III Flow USB-C With Lightning Connector",
+          price: 17.0,
+          image: "assets/images/chargAnker.jpg",
+        },
+        {
+          id: 7,
+          name: "នាឡិកាឆ្លាតវៃ ​KIESLECT Lora3 (PINK",
+          price: 79,
+          image: "assets/images/នាឡិកាឆ្លាតវៃ ​KIESLECT Lora3 (PINK.jpg",
+        },
+        {
+          id: 8,
+          name: "នាឡិកាឆ្លាតវៃ HUAWEI WATCH FIT 4",
+          price: 119,
+          image: "assets/images/HUAWEI WATCH FIT 4.jpg",
+        },
+        {
+          id: 9,
+          name: "ថ្មជំនួយទូរសព្ទ REMAX POWER BANK RPP-533 PD20+22.5W 10000mAh",
+          price: 29,
+          image:
+            "assets/images/ថ្មជំនួយទូរសព្ទ REMAX POWER BANK RPP-533 PD20+22.5W 10000mAh.jpg",
+        },
+        {
+          id: 10,
+          name: "HUAWEI M-Pen lite",
+          price: 20,
+          image: "assets/images/HUAWEI M-Pen lite.jpg",
+        },
+        {
+          id: 11,
+          name: "POWER BANK CUKTECH CP24 40W ( 20000mAh )Wireless Headphone",
+          price: 39,
+          image: "assets/images/POWER BANK CUKTECH CP24 40W ( 20000mAh ).jpg",
+        },
+        {
+          id: 12,
+          name: " LDNIO USB-A+C HUB 4 IN 1 Adapter DS-114uc",
+          price: 29,
+          image: "assets/images/adapter.jpg",
+        },
+        {
+          id: 13,
+          name: "Speaker Divoom Minitoo",
+          price: 39,
+          image: "assets/images/Speaker Divoom Minitoo.jpg",
+        },
+        {
+          id: 14,
+          name: "BMTJ GRAMMY SINCE 2007",
+          price: 17,
+          image: "assets/images/BMTJ GRAMMY SINCE 2007.jpg",
+        },
+        {
+          id: 15,
+          name: "Speaker Divoom Tiivoo2 (White)",
+          price: 69,
+          image: "assets/images/Speaker Divoom Tiivoo2 (White).jpg",
+        },
+        {
+          id: 16,
+          name: "ឧបករណ៍បំពងសម្លេង​ SONY SES-XE200 Bluetooth",
+          price: 109,
+          image: "assets/images/ឧបករណ៍បំពងសម្លេង​ SONY SES-XE200 Bluetooth.jpg",
+        },
+        {
+          id: 17,
+          name: "Apple EarPods គុណភាពខ្ពស និងប្រើឌុយ USB-C",
+          price: 38,
+          image: "assets/images/Apple EarPods គុណភាពខ្ពស និងប្រើឌុយ USB-C.jpg",
+        },
+        {
+          id: 18,
+          name: "REMAX AMOLED WATCH30",
+          price: 59,
+          image: "assets/images/REMAX AMOLED WATCH30.jpg",
+        },
+        {
+          id: 19,
+          name: "Apple USB-C Charge Cable (1m)",
+          price: 28,
+          image: "assets/images/Apple USB-C Charge Cable (1m).jpg",
+        },
+        {
+          id: 20,
+          name: "ថ្មជំនួយទូរសព្ទទាន់សម័យ Magnetic Charger W50",
+          price: 18,
+          image:
+            "assets/images/ថ្មជំនួយទូរសព្ទទាន់សម័យ Magnetic Charger W50.jpg",
+        },
+      ];
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = parseInt(urlParams.get("id"));
+      const product = products.find((p) => p.id === productId);
+
+      if (product) {
+        document.getElementById("product-detail").innerHTML = `
+        <div class="row">
+          <div class="col-md-6">
+            <img src="${product.image}" class="img-fluid" />
+          </div>
+          <div class="col-md-6">
+            <h3>${product.name}</h3>
+            <p class="text-primary h5">$${product.price.toFixed(2)}</p>
+            <p><strong>Brand:</strong> Coteci</p>
+            <p><strong>Material:</strong> សម្ភារៈ</p>
+            <p><strong>Origin:</strong> ប្រទេសចិន</p>
+            <button class="btn btn-success" id="add-to-cart">បញ្ចូលទៅក្នុងកាបូប</button>
+          </div>
+        </div>
+      `;
+
+        document.getElementById("add-to-cart").addEventListener("click", () => {
+          let cart = JSON.parse(localStorage.getItem("cart")) || [];
+          const existing = cart.find((i) => i.id === product.id);
+
+          if (existing) {
+            existing.quantity++;
+          } else {
+            cart.push({
+              id: product.id,
+              name: product.name,
+              price: product.price,
+              quantity: 1,
+            });
+          }
+
+          localStorage.setItem("cart", JSON.stringify(cart));
+          alert(product.name + " added to cart");
+        });
+      } else {
+        document.getElementById(
+          "product-detail"
+        ).innerHTML = `<p>Product not found.</p>`;
+      }
+    </script>
+  </body>
+</html>

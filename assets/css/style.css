@@ -1,0 +1,71 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+.card img {
+  height: 200px;
+  object-fit: cover;
+}
+
+footer {
+  margin-top: 50px;
+}
+body {
+  background: #f8f9fa;
+}
+
+/* Left form box */
+.contact-box {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Right info box */
+.info-box {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Info item layout */
+.info-item {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+/* Blue square icon */
+.icon-box {
+  width: 36px;
+  height: 36px;
+  background: #00aaff;
+  border-radius: 6px;
+}
+
+/* Fake captcha */
+.captcha-box {
+  border: 1px solid #ddd;
+  padding: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 4px;
+  background: #f9f9f9;
+}
+body {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial;
+}
+:lang(km) {
+  font-family: "Hanuman", serif;
+}
+.product-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.product-card .card-body {
+  text-align: center;
+}
